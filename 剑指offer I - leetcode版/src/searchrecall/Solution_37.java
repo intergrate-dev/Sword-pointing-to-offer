@@ -1,17 +1,20 @@
+package searchrecall;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import common.DrawNode;
 import common.Drawing;
-import common.PrintTree;
 import common.TreeNode;
 
+/**
+ * 二叉树（序列化 & 反序列化）
+ */
 public class Solution_37 {
 
     public static void main(String[] args) {
         // [1,2,3,null,null,4,5]
+
         TreeNode root = new TreeNode(1);
         TreeNode subL = new TreeNode(2);
         TreeNode subR = new TreeNode(3);
@@ -27,15 +30,16 @@ public class Solution_37 {
         TreeNode tn = inst.deserialize(r1);
         // new PrintTree().print(tn);
         Drawing d = new Drawing();
-        //先构建一颗二叉树
-        //调用入口方法画图
+        // 先构建一颗二叉树
+        // 调用入口方法画图
         try {
-            d.drawEntrance(root);
+            d.drawEntrance(root, "37.png");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
+
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
         if (root == null) {
@@ -64,7 +68,5 @@ public class Solution_37 {
         node.right = dfs(queue);
         return node;
     }
-
-    
 
 }

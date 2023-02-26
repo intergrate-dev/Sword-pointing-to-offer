@@ -3,6 +3,7 @@ package common;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
  
@@ -13,7 +14,7 @@ import java.io.IOException;
  */
 public class Drawing {
     // 以下是常量
-    private static final String PATH = "F:/tree.png";
+    // private static final String PATH = new File("").getCanonicalPath() + File.separator + "/tree.png";
     // 画板长度
     private static final int WIDTH = 800;
     // 画板宽度
@@ -64,8 +65,9 @@ public class Drawing {
         g2.setColor(Color.BLACK);
         g2.setFont(new Font(FONT_STYLE,Font.PLAIN,FONT_SIZE));
     }
-    private void closeSettings() throws IOException {
-        ImageIO.write(bi,IMAGE_STYLE,new FileOutputStream(PATH));
+    private void closeSettings(String fileName) throws IOException {
+        fileName = new File("").getCanonicalPath() + File.separator + "/output" + File.separator + fileName;
+        ImageIO.write(bi,IMAGE_STYLE,new FileOutputStream(fileName));
     }
  
     /**
@@ -185,16 +187,18 @@ public class Drawing {
         DrawNode a = new DrawNode(62,b,c);
         return a;
     }
-    public void drawEntrance(DrawNode drawNode) throws IOException {
+    
+    public void drawEntrance(DrawNode drawNode, String fileName) throws IOException {
         initSettings();
         firstTraverseAndDraw(null,drawNode,true,0,0);
-        closeSettings();
+        closeSettings(fileName);
     }
 
-    public void drawEntrance(TreeNode treeNode) throws IOException {
+    public void drawEntrance(TreeNode treeNode, String fileName) throws IOException {
         initSettings();
         firstTraverseAndDraw(null, treeNode, true,0,0);
-        closeSettings();
+        closeSettings(fileName);
+
     }
  
     public static void main(String[] args) throws IOException {
@@ -202,7 +206,7 @@ public class Drawing {
         //先构建一颗二叉树
         DrawNode root = d.build();
         //调用入口方法画图
-        d.drawEntrance(root);
+        d.drawEntrance(root, "test.png");
     }
  
 }

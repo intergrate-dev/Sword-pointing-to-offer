@@ -1,10 +1,10 @@
-
-
-import com.huawei.operationcenter.trainning.common.Drawing;
-import com.huawei.operationcenter.trainning.common.TreeNode;
+package dividemerge;
 
 import java.io.IOException;
 import java.util.HashMap;
+
+import common.Drawing;
+import common.TreeNode;
 
 public class Solution_07 {
 
@@ -13,21 +13,24 @@ public class Solution_07 {
     int[] inorder;
 
     /**
+     * 重建二叉树（根据前、中序重建二叉树）
+     * 
      * [3,9,20,15,7]
      * [9,3,15,20,7]
      *
      * [3,9,#,#,20,15,#,#,7,#,#]
+     * 
      * @param args args
      */
     public static void main(String[] args) {
-        int[] preoder = {3,9,20,15,7};
-        int[] inorder = {9,3,15,20,7};
+        int[] preoder = { 3, 9, 20, 15, 7 };
+        int[] inorder = { 9, 3, 15, 20, 7 };
         TreeNode treeNode = new Solution_07().buildTree(preoder, inorder);
         Drawing d = new Drawing();
-        //先构建一颗二叉树
-        //调用入口方法画图
+        // 先构建一颗二叉树
+        // 调用入口方法画图
         try {
-            d.drawEntrance(treeNode);
+            d.drawEntrance(treeNode, "07.png");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
