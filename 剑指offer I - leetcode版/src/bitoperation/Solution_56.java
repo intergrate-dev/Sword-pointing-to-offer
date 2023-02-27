@@ -1,5 +1,10 @@
 package bitoperation;
 
+/**
+ * 找只出现一次的数字
+ * 一个整型数组里除两个数字之外，其他数字都出现了两次。找出这两个数字，要求时间复杂度是O(n)，空间复杂度是O(1)。
+ * （哈希表方式排除了）
+ */
 public class Solution_56 {
 
     public static void main(String[] args) {
